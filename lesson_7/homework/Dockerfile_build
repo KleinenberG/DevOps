@@ -1,0 +1,9 @@
+FROM maven:3-jdk-7-slim
+ARG REPO
+WORKDIR /tmp/prj
+VOLUME /tmp/prj/maven
+RUN apt-get update && apt-get install -y git && \
+	git clone ${REPO} . && mvn package
+RUN	ls -la target
+RUN	cp target/*.war /tmp/prj/maven/
+RUN	ls -la /tmp/prj/maven/ 	 

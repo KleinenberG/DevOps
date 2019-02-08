@@ -1,0 +1,12 @@
+version: '2'
+services:
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile_build
+      args:
+        REPO: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git    
+    volumes:
+      - ./data:/tmp/prj/target  
+
+#prod:
