@@ -1,0 +1,6 @@
+FROM tomcat:8-jre8-slim
+WORKDIR /usr/local/tomcat/webapps
+#COPY --from=build /srv/target/*.war .
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
+
