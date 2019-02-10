@@ -1,5 +1,0 @@
-FROM maven:3-jdk-8-slim AS buildstg
-ARG REPO
-WORKDIR /prj
-RUN apt-get update && apt-get install -y git
-RUN git clone ${REPO} . && mvn package

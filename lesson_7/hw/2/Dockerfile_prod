@@ -1,4 +1,0 @@
-FROM tomcat:8-jre8-slim
-RUN apt-get update
-COPY --from=2_build /prj/target/*.war /usr/local/tomcat/webapps/
-CMD ["catalina.sh", "run"]

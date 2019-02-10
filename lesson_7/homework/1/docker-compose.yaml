@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        - REPO
+        REPO: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
     volumes:
       - ./war:/prj/target/
   tomcat:
