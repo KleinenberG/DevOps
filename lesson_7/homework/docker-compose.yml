@@ -6,10 +6,16 @@ services:
       dockerfile: Dockerfile_build
       args:
         REPO: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git    
+#    depends_on:
+#      - prod    
     volumes:
       - ./data:/tmp/prj/target  
 
   prod:
     build:
       context: .
-      dockerfile: Dockerfile_prod
+      dockerfile: Dockerfile_prod     
+    volumes:
+      - ./data:/usr/local/tomcat/webbaps/
+    ports:
+      - 8080:8080

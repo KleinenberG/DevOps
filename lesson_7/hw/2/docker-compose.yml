@@ -1,0 +1,16 @@
+version: '2'
+services:
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile_build  
+      args:
+        REPO: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git 
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile_prod
+    depends_on:
+      - build 
+    ports:
+      - "8080:8080"

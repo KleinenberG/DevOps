@@ -1,0 +1,31 @@
+---
+
+fruits:
+  - Apple
+  - Orange
+  - Strawbery
+  - Mango
+Vasia:
+  name: Vasia Ivanos
+  job: Dveloper
+  Skills: Java
+#Employee records
+
+- Ivan:
+  name: Ivan
+  job: Developer
+  skills:
+    - lips
+    - fortran
+- Vasia:
+  name: Popov
+  job: DevOps
+  skills: 
+    - bash
+    - python
+    - docker   
+
+Vasia: {name: Vasia Ivanov, job: Developer, skills: java}
+fruits: ['Appla', 'Orange']
+
+---
