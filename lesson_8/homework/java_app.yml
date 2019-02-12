@@ -35,6 +35,13 @@
       args:
         chdir: /srv/prj/
 
+#    - name: Copy
+#      synchronize:
+#        mode: pull
+#        src: /srv/prj/target/
+#        dest: rsync://ans-mst/srv/prj/  
+
+
     - name: Copy artifact to master
       fetch: 
         src: /srv/prj/target/hello-1.0.war
