@@ -1,0 +1,69 @@
+---
+- name: build java_app
+  hosts: build
+  become: yes
+    
+  tasks:
+
+    - name: Update pkg cache
+      apt:
+        update_cache: yes
+
+    - name: Install maven
+      apt:
+        name: maven
+        state: present
+
+    - name: Install java for maven
+      apt:
+        name: openjdk-8-jdk
+        state: present    
+
+    - name: Install git
+      apt:
+        name: git
+        state: present
+
+    - name: Clone repo
+      git:
+        repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+        dest: /srv/prj/
+        clone: yes
+
+    - name: Build java_app
+      shell: mvn package
+      args:
+        chdir: /srv/prj/
+
+    - name: Copy artifact to master
+      fetch: 
+        src: /srv/prj/target/hello-1.0.war
+        dest: /srv/prj/
+        flat: yes 
+
+- name: delivery app  to prod
+  hosts: prod
+  become: yes
+
+  tasks:
+
+    - name: Update pkg cache
+      apt:
+        update_cache: yes
+
+    - name: Install tomcat8
+      apt:
+        name: tomcat8
+        state: present
+
+    - name: Ensure tomcat8 sevices is started
+      service:
+        name: tomcat8
+        state: started
+
+    - name: Copy arifact
+      copy:
+        src: /srv/prj/hello-1.0.war
+        dest: /var/lib/tomcat8/webapps/
+
+
