@@ -1,0 +1,21 @@
+---
+- name: update nginx
+  hosts: build
+  become: yes
+
+  tasks:
+
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Edit config
+      lineinfile:
+        dest: /var/www/html/index.nginx-debian.html
+        regexp: '<title>Welcome to nginx!</title>'
+        line: '<p><script> document.write(new Date().toLocaleDateString()); </script></p>'
+
+   
+
+

@@ -1,0 +1,16 @@
+---
+- name: Ensure Apache pkg in present
+  apt: name=apache2 state=present
+  when: ansible_os_family ==  "Debian"
+
+
+- name: Ensure Apache pkg in present
+  yum: name=httpd state:present
+  when: ansible_os_family ==  "RedHat"a
+  notify: Restart Apache
+
+
+
+  Handlers: 
+  - name: Restart Apache
+    service: name=httpd state=restarted
