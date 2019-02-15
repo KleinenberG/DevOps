@@ -14,5 +14,5 @@
   become: yes
 
   roles:
-   - security
-   - common
+    - security
+    - common

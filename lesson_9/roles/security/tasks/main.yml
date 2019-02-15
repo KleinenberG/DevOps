@@ -1,9 +1,8 @@
 ---
-# tasks file for sequrity
-- nmae: copy banner
+- name: copy banner
   copy: src=banner dest=/etc/ssh/
 
-- nmae: edit config
+- name: edit config
   lineinfile:
     dest: /etc/ssh/sshd_config
     line: 'Banner /etc/ssh/banner'

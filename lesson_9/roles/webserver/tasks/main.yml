@@ -1,11 +1,9 @@
 ---
-# tasks file for webserver
-
 - name: install nginx
   apt: name=nginx state=installed
 
 - name: copy index.html
-  copy: src=index.html dest={{ dest_folders }}/index.html mode=0755
+  copy: src=index.html dest={{ dest_folder }}/index.html mode=0755
   notify: 
     - restart nginx
 

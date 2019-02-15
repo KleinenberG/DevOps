@@ -1,5 +1,4 @@
 ---
-# tasks file for common
 - name: install pkg
   apt: name={{ item }} state=installed
   with_items:

@@ -1,4 +1,3 @@
 ---
-# handlers file for sequrity
-- nmae: restart sshd
-  service: namr=sshd state=restarted
+- name: restart sshd
+  service: name=sshd state=restarted
