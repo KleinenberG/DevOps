@@ -1,0 +1,25 @@
+---
+- name: install pkg
+  apt: name={{ item }} state=installed update_cache=true
+  with_items:
+    - openjdk-8-jdk
+    - git
+    - maven 
+- name: clone repo
+  git: 
+    repo: 'https://github.com/boxfuse/boxfuse-sample-java-war-hello.git'
+    dest: /srv/java_app/
+    clone: yes
+- name: build war_file
+  shell: mvn package
+  args: 
+    chdir: /srv/java_app/
+  register: build
+- debug: var=build
+
+- name: Copy artifact to master
+  fetch: 
+    src: /srv/java_app/target/hello-1.0.war
+    dest: ./
+    flat: yes 
+
