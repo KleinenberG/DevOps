@@ -1,4 +1,4 @@
-peline {
+pipeline {
 	agent { label'agent1' }
 		stages {
 			stage ('build docker container prod and registry') {
